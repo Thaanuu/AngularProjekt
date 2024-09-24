@@ -1,0 +1,20 @@
+<div style="text-align:center;">
+    <app-logout></app-logout>
+    <app-settings></app-settings>
+    <br><br>
+    <h2>Add Todo:</h2>
+    <section>
+        <label>
+            Todo:<br>
+            <input id="todoText" type="text" [(ngModel)]="todoService.todoField"/><br>
+            Description(optional):<br>
+            <input id="todoDescription" type="text" [(ngModel)]="todoService.descriptionField"/> <br>
+            Deadline(optional):<br>
+            <input id="todoDeadline" type="text" [(ngModel)]="todoService.deadlineField"/><br>
+            <button (click)="deleteAll()" class="redButton">Delete All</button>
+            <button (click)="addTodo(todoService.todoField, todoService.descriptionField, todoService.deadlineField)" class="greenButton">{{buttonText}}</button>
+            
+        </label>
+    </section>
+    <app-todo-table (changeButtonEvent)="changeButtonEvent($event)"></app-todo-table>
+</div>

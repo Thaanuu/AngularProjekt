@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+    background: #F3EEEA;
+    color: black;
+    margin:15px;
+    font-family:Roboto;
+}
+
+h1{
+    background:#6C4E31;
+    color:white;
+    padding:10px;
+}
+
+.greenButton{
+    width:200px;
+    background-color: green;
+    border-radius: 5px;
+    border-width: 0;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .redButton{
+    width:100px;
+    background-color: darkred;
+    border-radius: 5px;
+    border-width: 0;
+    color: lightgrey;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .deleteButton{
+    width:100px;
+    background-color: darkred;
+    border-radius: 5px;
+    border-width: 0;
+    color: lightgrey;
+    cursor: pointer;
+    padding: 5px;
+  }
+  .editButton{
+    width:100px;
+    background-color: #0e518d ;
+    border-radius: 5px;
+    border-width: 0;
+    color: lightgrey;
+    cursor: pointer;
+    padding: 5px;
+  }
+  .transferButton{
+    width:100px;
+    background-color: #FBEC5D ;
+    border-radius: 5px;
+    border-width: 0;
+    color: black;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  button{
+    margin: 3px;
+  }
+  input[type=checkbox]{
+    cursor: pointer;
+  }
+
+  table{
+    margin-left:auto;
+    margin-right:auto;
+    background:transparent;
+    border-collapse: seperate;
+    border-spacing: 7px;
+    word-wrap:break-word;
+    table-layout:fixed;
+    padding:10px;
+}
+
+th, td{
+   padding:5px;
+   border-radius: 8px;
+   background:#EBE3D5;
+   text-align:center;
+   vertical-align:middle;
+   overflow: visible;
+}
+
+select{
+    margin-bottom:5px;
+    background: #EBE3D5;
+    border-width: 0px;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+th{
+background:#6C4E31;
+color:white;
+}
+
+th:nth-child(1){
+width:200px;
+}
+th:nth-child(2){
+width:150px;
+}
+th:nth-child(3){
+width:100px;
+}
+th:nth-child(4){
+width:90px;
+}
+th:nth-child(5){
+width:100px;
+}
+
+
+  

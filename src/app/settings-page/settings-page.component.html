@@ -1,0 +1,47 @@
+<div style="text-align:center;">
+    <app-logout></app-logout>
+    <app-settings></app-settings>
+    <br><br>
+    <h2>Settings:</h2>
+    <section>
+        <form [formGroup]="userForm" (ngSubmit)="addOrEditUser()" style="text-align:center;">
+            <label>
+                Name: <br>
+                <input type="text" formControlName="name"  />
+            </label><br>
+            <label>
+                Password: <br>
+                <input type="text" formControlName="pass" />
+            </label><br>
+            <button type="submit" *ngIf="settingsService.editingMode===false" [disabled]="!userForm.valid" [style.background-color]="!userForm.valid ? 'grey' : 'green'">Add User</button>
+            <button type="submit" *ngIf="settingsService.editingMode===true" [disabled]="!userForm.valid" [style.background-color]="!userForm.valid ? 'grey' : 'green'">Save Changes</button>
+        </form>
+    </section>
+
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="this.settingsService.storageService.loaded === true">
+         
+        <tr *ngFor="let x of this.settingsService.getAllUsers() ">
+
+            <td>
+                {{x.name}}
+            </td>
+            <td>
+                <button (click)="editMode(x.id)" class="editButton">Edit</button>
+            </td>
+            <td>
+                <button (click)="deleteUser(x.id)" class="deleteButton">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    </section>
+</div>

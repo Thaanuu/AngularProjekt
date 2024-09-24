@@ -1,0 +1,67 @@
+<div>
+<h2>Todo List:</h2>
+<section>
+    <select id="sort" (change)="changeSort($event)" type="select">
+        <option value="alphabet">Sort by Alphabet</option>
+        <option value="deadline">Sort by Deadline</option>
+        <option value="status">Sort by Status</option>
+        <option value="priority">Sort by Priority</option>
+    </select><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Text</th>
+                <th>Description</th>
+                <th>Deadline</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Transfer</th>
+            </tr>
+        </thead>
+        
+        <tbody *ngIf="this.todoService.storageService.loaded === true">
+            <tr *ngFor="let x of this.todoService.storageService.getUserbyId(this.todoService.currentUser)?.todoList" [style.color]="x.status=='overdue' ? 'red' : null"  [style.color]="checkDateforHighlight(x) ? 'darkred' : 'null'" [style.textDecoration]="x.status=='completed' ? 'line-through' : null">
+                {{this.todoService.sort(todoService.currentSort)}}  
+                <td (click)="markComplete(x.id)">
+                    {{x.todoText}}
+                </td>
+                <td (click)="markComplete(x.id)">
+                    {{x.description}}
+                </td>
+                <td (click)="markComplete(x.id)">
+                    {{x.deadline}}
+                </td>
+                <td >
+                    <input [(ngModel)]="x.priority" (click)="changePrio(x.id, $event)" type="checkbox" name="prio" id="prio">
+                </td>
+                <td>
+                    <select [(ngModel)]="x.status" id="sort" (change)="changeStatus(x.id, $event)"  type="select" name="select">
+                        <option value="open">open</option>
+                        <option value="overdue">overdue</option>
+                        <option value="in progress">in progress</option>
+                        <option value="completed">completed</option>
+                    </select>
+                </td>
+
+                <td>
+                    <button (click)="editTodo(x.id)" class="editButton">Edit</button>
+                </td>
+                <td>
+                    <button (click)="deleteTodo(x.id)" class="deleteButton">Delete</button>
+                    
+                </td>
+                <td *ngIf="checkDateforTransfer(x)">
+                    <button *ngIf="todoService.transferMode===false" (click)="openTransfer()" class="transferButton">Transfer</button>
+                    <select *ngIf="todoService.transferMode===true" (change)="transfer(x,$event)">
+                        <option value="select a user">Select a User</option>
+                        <option  *ngFor="let user of todoService.getUsers()" value={{user.id}}>{{user.name}}</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+</div>
